@@ -1,0 +1,23 @@
+.container{
+    border: 1px solid black;   
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+.card > img{
+    width: 100%;
+}
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
