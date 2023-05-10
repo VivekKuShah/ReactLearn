@@ -5,7 +5,8 @@ import { ShimmerUi } from "./ShimmerUi";
 
 export const Body = () => {
     let [valueIn,setValueIn] = useState("")
-    let [list,setList] = useState([]);
+    let [allReslist,setAllReslist] = useState([]);
+    let [filterRes,setFilterRes] = useState([])
     
     useEffect(function effect(){
         getRestaurants()
@@ -15,28 +16,33 @@ export const Body = () => {
         let data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&page_type=DESKTOP_WEB_LISTING");
         let dataJson = await data.json()
         console.log(dataJson)
-        setList(dataJson.data.cards[2].data.data.cards)
+        setAllReslist(dataJson.data.cards[2].data.data.cards);
+        setFilterRes(dataJson.data.cards[2].data.data.cards);
         
     }
-    return list.length===0 ? <ShimmerUi/> : (
+    
+    return allReslist.length===0 ? <ShimmerUi/> : (
         <>
         <input placeholder ="search restaurant" type="text" value={valueIn} onChange={ function onChangeHandler(event){
             setValueIn(event.target.value)
         }}/>
         <button onClick={function searchRes(){
-            let filterRes =  list.filter(function filterRes(res){
-                console.log(res)
-                return res.data.name.includes(valueIn)
+            let filter =  allReslist.filter(function filterRes(res){
+                console.log(res.data.name.toLowerCase())
+                return res.data.name.toLowerCase().includes(valueIn.toLowerCase())
             })
-            setList(filterRes)
+            console.log(filter)
+            setFilterRes(filter)
+
         }}>Search</button>
-        <div className="cardContainer">
+        {filterRes.length === 0 ? <h1>Not Found Res.....</h1>:<div className="cardContainer">            
             {
-                list.map((restaurant)=>{
+                filterRes.map((restaurant)=>{
                     return <ResList {...restaurant.data} key={restaurant.data.id} />
                 })
             }
-        </div>
+        </div> }
+       
         </>
     )
 }
