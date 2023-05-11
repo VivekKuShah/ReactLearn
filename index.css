@@ -20,4 +20,15 @@ ul{
 .cardContainer{
     display: flex;
     flex-wrap: wrap;
+    margin: 5px;
+}
+img{
+    width: 200px;
+    height: 100px;
+}
+.simmer{
+    background-color:rgba(211, 211, 211, 0.529);
+    width: 200px;
+    height: 300px;
+    margin: 5px;
 }

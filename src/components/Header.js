@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { logoURL } from "../constant";
 import { Link } from "react-router-dom";
+import Logo from "../assets/swiggy.png"
 
 
 export const Header = () =>{
@@ -10,7 +11,7 @@ export const Header = () =>{
             <header className="container">
                 <nav>
                     <ul>
-                        <li><img src={logoURL}/></li>
+                        <li><img src={Logo}/></li>
                         <Link to="/"><li>Home</li></Link>
                         <Link to="/about"><li>about</li></Link>
                         <Link to="/contact"><li>Contact</li></Link>

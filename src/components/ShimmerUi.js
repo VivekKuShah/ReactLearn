@@ -1,7 +1,11 @@
 export const ShimmerUi = () => {
     return (
-      <div>
-        <h1>Shimmer Ui ....................</h1>
-      </div>
+        <div className="cardContainer">
+          {Array(20).fill("").map((item)=>{
+            return <div className="simmer"></div>
+          })}
+        </div>
+        
+      
     )
   }

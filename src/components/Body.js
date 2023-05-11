@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { card } from "../constant";
 import { ResList } from "./ResList";
 import { ShimmerUi } from "./ShimmerUi";
+import { Link } from "react-router-dom";
 
 export const Body = () => {
     let [valueIn,setValueIn] = useState("")
@@ -38,7 +39,7 @@ export const Body = () => {
         {filterRes.length === 0 ? <h1>Not Found Res.....</h1>:<div className="cardContainer">            
             {
                 filterRes.map((restaurant)=>{
-                    return <ResList {...restaurant.data} key={restaurant.data.id} />
+                    return <Link to={"/resmenu/"+restaurant.data.id}><ResList {...restaurant.data} key={restaurant.data.id} /></Link>
                 })
             }
         </div> }
