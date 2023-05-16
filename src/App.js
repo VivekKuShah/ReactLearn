@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Error } from "./components/Error";
 import { Contact } from "./components/Contact";
 import {Resmenu} from "./components/Resmenu"
+import { Profile } from "./components/AboutProfile";
 
 
 export const App = () => {
@@ -25,12 +26,18 @@ const appRouter = createBrowserRouter([
     errorElement:<Error/>,
     children:[
       {
-        path:"/about",
+        path:"about",  //parent path/path ("/" means from the root)
         element:<About/>,
-        errorElement:<Error/>
+        errorElement:<Error/>,
+        //Childrens are always rendered inside the outlet, Outlet always we create inside the parent
+        children:[{
+          path:"profile", //if we put / react router dom consdider to localhost:/profile, If we give it like this it will assume like this take the parent path and add profile to it http://localhost:1234/about/profile
+          element:<Profile/> 
+        }
+        ]
       },
       {
-        path:"/contact",
+        path:"contact",
         element:<Contact/>,
         errorElement:<Error/>
       },
@@ -40,7 +47,7 @@ const appRouter = createBrowserRouter([
         errorElement:<Error/>
       },
       {
-        path:"/resmenu/:restID",
+        path:"resmenu/:restID",
         element:<Resmenu/>,
         errorElement:<Error/>
       }
