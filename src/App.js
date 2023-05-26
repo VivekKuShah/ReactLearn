@@ -8,9 +8,15 @@ import { Error } from "./components/Error";
 import { Contact } from "./components/Contact";
 import {Resmenu} from "./components/Resmenu"
 import { Profile } from "./components/AboutProfile";
+import { useOnline } from "./utils/useOnline";
 
 
 export const App = () => {
+  let isOnline = useOnline();
+   if(!isOnline)
+       return (<><h1>🤦‍♂️It looks like u r offline </h1>
+       <h2>Do whatever you want to do..............................</h2>
+       </> )
   return (
     <div>
       <Header/>
