@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import ReactDom from "react-dom/client";
 import "../index.css"
 import {Header} from "./components/Header";
@@ -10,12 +11,16 @@ import {Resmenu} from "./components/Resmenu"
 import { Profile } from "./components/AboutProfile";
 import { useOnline } from "./utils/useOnline";
 
+import { ShimmerUi } from "./components/ShimmerUi";
 
-export const App = () => {
+const Instamart = lazy(()=>import("./components/Instamart"))
+
+
+const App = () => {
   let isOnline = useOnline();
    if(!isOnline)
        return (<><h1>🤦‍♂️It looks like u r offline </h1>
-       <h2>Do whatever you want to do..............................</h2>
+       <h2>Do whatever you want to do..............................❤️🦴</h2>
        </> )
   return (
     <div>
@@ -56,7 +61,13 @@ const appRouter = createBrowserRouter([
         path:"resmenu/:restID",
         element:<Resmenu/>,
         errorElement:<Error/>
-      }
+      },
+      {
+        path:"instamart",
+        element:(<Suspense fallback={<h1>Loading......</h1>}>
+          <Instamart/>
+          </Suspense>)
+      },
     ]
   }  
 ])

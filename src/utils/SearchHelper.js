@@ -5,4 +5,4 @@ export function filterData(valueIn,allReslist){
     })
     return filter;
 }
-// WE CANT USE Use state variable inside the function, so we need to custome hooks
+// WE CANT USE state variable inside the function,we need to custome hooks

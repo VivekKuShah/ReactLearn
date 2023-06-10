@@ -15,6 +15,7 @@ export const Header = () =>{
                         <Link to="/"><li>Home</li></Link>
                         <Link to="/about"><li>about</li></Link>
                         <Link to="/contact"><li>Contact</li></Link>
+                        <Link to="/instamart"><li>Instamart(CodeSpliting)</li></Link>
                         {
                         isLoggedIn ? 
                         <button onClick={()=>{ setIsLoggedIn(false)}}>Logout</button> :

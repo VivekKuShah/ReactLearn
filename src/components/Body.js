@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { card } from "../constant";
 import { ResList } from "./ResList";
 import { ShimmerUi } from "./ShimmerUi";
@@ -43,7 +43,7 @@ export const Body = () => {
         {filterRes.length === 0 ? <h1>Not Found Res.....</h1>:<div className="flex flex-wrap justify-evenly">            
             {
                 filterRes.map((restaurant)=>{
-                    return <Link to={"/resmenu/"+restaurant.data.id}><ResList {...restaurant.data} key={restaurant.data.id} /></Link>
+                    return <Link to={"/resmenu/"+restaurant.data.id}><ResList {...restaurant.data} key={restaurant.data.id} loading="lazy"/></Link>
                 })
             }
         </div> }
