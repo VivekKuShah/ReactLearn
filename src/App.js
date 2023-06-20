@@ -11,8 +11,7 @@ import {Resmenu} from "./components/Resmenu"
 import { Profile } from "./components/AboutProfile";
 import { useOnline } from "./utils/useOnline";
 
-import { ShimmerUi } from "./components/ShimmerUi";
-
+// Lazy Loading
 const Instamart = lazy(()=>import("./components/Instamart"))
 
 
@@ -54,7 +53,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path:"/",
-        element:<Body/>,
+        element:<Body propDrill={{name:"VivekKuShah",Branch:"Computer Science"}}/>,
         errorElement:<Error/>
       },
       {

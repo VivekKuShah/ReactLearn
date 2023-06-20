@@ -1,6 +1,7 @@
 import { cloudinaryImg } from "../constant";
 
-export const ResList = ({name,cloudinaryImageId,cuisines,lastMileTravel}) =>{
+export const ResList = ({name,cloudinaryImageId,cuisines,lastMileTravel,propDrillAgain}) =>{
+    console.log(propDrillAgain)
     return(
         <div className="border-2 border-solid w-60 h-96 mb-4 mt-4 shadow-md">
            <img src={cloudinaryImg+cloudinaryImageId} className="w-full h-40 " />
@@ -11,6 +12,8 @@ export const ResList = ({name,cloudinaryImageId,cuisines,lastMileTravel}) =>{
            </div>
            
            <h4 className="px-1">{lastMileTravel}</h4>
+           <hr></hr>
+           <h1>Prop Drilling - {propDrillAgain.name}</h1>
         </div>
     )
 }

@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { filterData } from "../utils/SearchHelper";
 import {useOnline} from "../utils/useOnline";
 
-export const Body = () => {
+export const Body = ( {propDrill} ) => {
+    console.log(propDrill)
     let [valueIn,setValueIn] = useState("")
     let [allReslist,setAllReslist] = useState([]);
     let [filterRes,setFilterRes] = useState([])
@@ -43,7 +44,7 @@ export const Body = () => {
         {filterRes.length === 0 ? <h1>Not Found Res.....</h1>:<div className="flex flex-wrap justify-evenly">            
             {
                 filterRes.map((restaurant)=>{
-                    return <Link to={"/resmenu/"+restaurant.data.id}><ResList {...restaurant.data} key={restaurant.data.id} loading="lazy"/></Link>
+                    return <Link to={"/resmenu/"+restaurant.data.id}><ResList {...restaurant.data} key={restaurant.data.id} propDrillAgain ={propDrill}/></Link>
                 })
             }
         </div> }
