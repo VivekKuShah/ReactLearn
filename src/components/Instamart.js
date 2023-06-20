@@ -5,7 +5,12 @@ const Section = ({title,des}) =>{
     return(
         <div className="border border-red-300 p-1 m-1">
             <h2>{title}</h2>
-            <p>{des}</p>
+            {
+                // Built Accordian 
+                visible ? (<button onClick={()=>{setVisible(false)}}>Hide</button>):
+                (<button onClick={()=>{setVisible(true)}}>Show</button>)
+            }
+            {visible && <p>{des}</p>}
         </div>
     )
 }
