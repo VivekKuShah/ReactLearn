@@ -1,17 +1,20 @@
-import { lazy, useEffect, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { card } from "../constant";
 import { ResList } from "./ResList";
 import { ShimmerUi } from "./ShimmerUi";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/SearchHelper";
 import {useOnline} from "../utils/useOnline";
+import Usercontext from "../utils/Usercontext";
 
 export const Body = ( {propDrill} ) => {
-    console.log(propDrill)
+    // console.log(propDrill)
     let [valueIn,setValueIn] = useState("")
     let [allReslist,setAllReslist] = useState([]);
     let [filterRes,setFilterRes] = useState([])
     
+    const {user,setnewdata} = useContext(Usercontext);
+
     useEffect(function effect(){
         getRestaurants()
     },[])
@@ -40,7 +43,12 @@ export const Body = ( {propDrill} ) => {
             let filter = filterData(valueIn,allReslist)
             setFilterRes(filter)
         }}>Search</button>
+
+        <input value={user.name} onChange={e=>{setnewdata({...user,name:e.target.value})}}></input>
+
+        <input value={user.email} onChange={e=>{setnewdata({...user,email:e.target.value})}}></input>
         </div>
+
         {filterRes.length === 0 ? <h1>Not Found Res.....</h1>:<div className="flex flex-wrap justify-evenly">            
             {
                 filterRes.map((restaurant)=>{

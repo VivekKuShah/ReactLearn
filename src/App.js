@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import ReactDom from "react-dom/client";
 import "../index.css"
 import {Header} from "./components/Header";
@@ -11,21 +11,32 @@ import {Resmenu} from "./components/Resmenu"
 import { Profile } from "./components/AboutProfile";
 import { useOnline } from "./utils/useOnline";
 
+import Usercontext from "./utils/Usercontext";
+
 // Lazy Loading
 const Instamart = lazy(()=>import("./components/Instamart"))
 
 
 const App = () => {
+  const [newData,setNewData]=useState({name:"Dynamic Data",email:"vivekkushah@gmail.com"}
+)
+   
   let isOnline = useOnline();
    if(!isOnline)
        return (<><h1>🤦‍♂️It looks like u r offline </h1>
        <h2>Do whatever you want to do..............................❤️🦴</h2>
        </> )
   return (
+    <>
+      
+      
+    <Usercontext.Provider value={{user:newData,setnewdata:setNewData}}>
     <div>
-      <Header/>
-      <Outlet/>
+    <Header/>
+    <Outlet/>
     </div>
+    </Usercontext.Provider>
+    </>
   )
 }
 

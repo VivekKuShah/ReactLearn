@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { logoURL } from "../constant";
 import { Link } from "react-router-dom";
 import Logo from "../assets/swiggy.png"
+import Usercontext from "../utils/Usercontext";
 
 
 export const Header = () =>{
     const[isLoggedIn,setIsLoggedIn] = useState(false)
+    const user = useContext(Usercontext)
+    console.log(user)
     return (
         <div>
             <header >
@@ -20,7 +23,8 @@ export const Header = () =>{
                         isLoggedIn ? 
                         <button onClick={()=>{ setIsLoggedIn(false)}}>Logout</button> :
                         <button onClick={()=>{ setIsLoggedIn(true)}}>Login</button>
-                        }                     
+                        }   
+                        <p>{user.user.name}</p>                  
                     </ul>
                     
                 </nav>
