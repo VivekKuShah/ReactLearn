@@ -12,6 +12,9 @@ import { Profile } from "./components/AboutProfile";
 import { useOnline } from "./utils/useOnline";
 
 import Usercontext from "./utils/Usercontext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import { Cart } from "./components/Cart";
 
 // Lazy Loading
 const Instamart = lazy(()=>import("./components/Instamart"))
@@ -29,13 +32,14 @@ const App = () => {
   return (
     <>
       
-      
+    <Provider store={store}>
     <Usercontext.Provider value={{user:newData,setnewdata:setNewData}}>
     <div>
     <Header/>
     <Outlet/>
     </div>
     </Usercontext.Provider>
+    </Provider>
     </>
   )
 }
@@ -77,6 +81,11 @@ const appRouter = createBrowserRouter([
         element:(<Suspense fallback={<h1>Loading......</h1>}>
           <Instamart/>
           </Suspense>)
+      },
+      {
+        path:"cart",
+        element:<Cart/>,
+        errorElement:<Error/>
       },
     ]
   }  

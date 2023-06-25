@@ -1,4 +1,4 @@
-import { lazy, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { card } from "../constant";
 import { ResList } from "./ResList";
 import { ShimmerUi } from "./ShimmerUi";
