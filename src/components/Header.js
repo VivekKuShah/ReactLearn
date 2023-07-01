@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { logoURL } from "../constant";
 import { Link } from "react-router-dom";
-import Logo from "../assets/swiggy.png"
+// import Logo from "../assets/swiggy.png" - getting error during testing
 import Usercontext from "../utils/Usercontext";
 import { useSelector } from "react-redux";
 
